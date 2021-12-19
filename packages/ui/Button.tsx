@@ -1,3 +1,5 @@
+import { Button as ChackraButton } from '@chakra-ui/react';
+
 export const Button = () => {
-  return <button>Boop</button>;
+  return <ChackraButton>Boop</ChackraButton>;
 };

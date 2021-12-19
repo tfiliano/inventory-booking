@@ -1,10 +1,12 @@
-import { Button } from "ui";
+import { Button, Sidebar } from "ui";
 
 export default function Web() {
   return (
     <div>
-      <h1>Web</h1>
-      <Button />
+      <Sidebar >
+        <h1>Web</h1>
+        <Button />
+      </Sidebar >
     </div>
   );
 }
