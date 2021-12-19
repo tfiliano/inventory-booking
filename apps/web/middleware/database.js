@@ -3,7 +3,7 @@ import nextConnect from 'next-connect';
 
 
 
-const client = new MongoClient('mongodb+srv://bookingAdmin:PA.gB7NRZdJr983@invetory.brmpx.mongodb.net/booking?retryWrites=true&w=majority', {
+const client = new MongoClient(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
