@@ -4,17 +4,16 @@ import {
   Box, 
   chakra, 
   SimpleGrid,
-  Stat,
-  StatLabel,
-  StatNumber,
+  Center,
   useColorModeValue, } from "@chakra-ui/react";
 import { Button, Sidebar } from "ui";
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 // export default function
 
 const Web = ({data}) => {
-
+  const router = useRouter();
   const [results, setResults] = useState(data);
 
   const onChange = (e) => {
@@ -38,25 +37,46 @@ const Web = ({data}) => {
     setResults(json);
   }
 
+  const openNewEvent = async (e) => {
+    
+    e.preventDefault()
+    router.push("/events/add")
+  }
+
   return (
     <div>
       <Sidebar >
-        {/* <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
-          <chakra.h1
+        <Button onClick={openNewEvent} >Add New</Button>
+        <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
+          {/* <chakra.h1
             textAlign={'center'}
             fontSize={'4xl'}
             py={10}
             fontWeight={'bold'}>
-            What is our company doing?
-          </chakra.h1>
+            Select a day
+          </chakra.h1> */}
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-            <Stat><Button onClick={getDataForPreviousDay}>Previous Day</Button></Stat>
-            <Stat>{dayjs(results.date).format('MM/DD/YYYY')}</Stat>
-            <Stat><Button onClick={getDataForNextDay}>Next Day</Button></Stat>
+            <Center>
+              <Button 
+                onClick={getDataForPreviousDay}  
+                _hover={{
+                  bg: 'cyan.400',
+                  color: 'white',
+                }}>Previous Day
+              </Button>
+            </Center>
+            <Center>{dayjs(results.date).format('MM/DD/YYYY')}</Center>
+            <Center>
+              <Button 
+                onClick={getDataForNextDay}  
+                _hover={{
+                  bg: 'cyan.400',
+                  color: 'white',
+                }}>Next Day
+              </Button>
+            </Center>
           </SimpleGrid>
-        </Box> */}
-
-        {/* <Button /> */}
+        </Box>
       </Sidebar >
     </div>
   );

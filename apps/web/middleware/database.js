@@ -10,10 +10,15 @@ const client = new MongoClient(process.env.MONGO_URI, {
 
 async function database(req, res, next) {
     // if (!client.isConnected()) 
-    await client.connect();
-    req.dbClient = client;
-    req.db = client.db('MCT');
-    return next();
+    try {
+        await client.connect();
+        req.dbClient = client;
+        req.db = client.db('booking');
+        return next();
+    } catch (error) {
+        console.log("error getting database ", error)
+    }
+
 }
 
 const middleware = nextConnect();

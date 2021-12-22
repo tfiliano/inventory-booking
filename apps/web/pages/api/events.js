@@ -1,5 +1,6 @@
 import nextConnect from "next-connect";
 import middleware from "../../middleware/database";
+import { ObjectId } from "mongodb";
 
 const handler = nextConnect();
 
@@ -8,7 +9,7 @@ handler.use(middleware);
 handler.get(async (req, res) => {
   const { date } = req.query;
   const dataModel = {
-    "_id": new ObjectID(),
+    "_id": new ObjectId(),
     "dtStart": date,
     "dtEnd": date,
     "dtStamp": date,

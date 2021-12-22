@@ -21,7 +21,15 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+
+
+  
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbSeparator,
 } from '@chakra-ui/react';
+
 import {
   FiHome,
   FiTrendingUp,
@@ -32,6 +40,8 @@ import {
   FiBell,
   FiChevronDown,
 } from 'react-icons/fi';
+
+
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 
@@ -70,44 +80,29 @@ export const Sidebar = ({ children, }: { children: ReactNode; }) => {
         {/* mobilenav */}
         <MobileNav onOpen={onOpen} />
         <Box ml={{ base: 0, md: 60 }} p="4">
+        
+
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <BreadcrumbLink as={Link} to='#'>
+              Home
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <BreadcrumbLink as={Link} to='#'>
+              About
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink>Contact</BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
           {children}
         </Box>
       </Box>
     );
   }
 
-// export default function SidebarWithHeader({
-//   children,
-// }: {
-//   children: ReactNode;
-// }) {
-//   const { isOpen, onOpen, onClose } = useDisclosure();
-//   return (
-//     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-//       <SidebarContent
-//         onClose={() => onClose}
-//         display={{ base: 'none', md: 'block' }}
-//       />
-//       <Drawer
-//         autoFocus={false}
-//         isOpen={isOpen}
-//         placement="left"
-//         onClose={onClose}
-//         returnFocusOnClose={false}
-//         onOverlayClick={onClose}
-//         size="full">
-//         <DrawerContent>
-//           <SidebarContent onClose={onClose} />
-//         </DrawerContent>
-//       </Drawer>
-//       {/* mobilenav */}
-//       <MobileNav onOpen={onOpen} />
-//       <Box ml={{ base: 0, md: 60 }} p="4">
-//         {children}
-//       </Box>
-//     </Box>
-//   );
-// }
 
 interface SidebarProps extends BoxProps {
   onClose: () => void;
